@@ -2,7 +2,6 @@ import numpy as np
 import math
 import random
 import copy
-from logic import *
 
 ALPHA = 0.2
 E = 0.01
