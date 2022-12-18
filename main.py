@@ -65,7 +65,8 @@ def predict_next(W1, W2, line):
 
 choice = input("Выберите режим работы: 1 - обучение; !1 - предсказание: ")
 if choice == '1':
-    X_choice = input("Выберите последовательность: \n1 - ряд Фиббоначи\n2 - Факториальная функция\n\n")
+    X_choice = input("Выберите последовательность: \n1 - ряд Фиббоначи\n"
+                     "2 - факториальная функция\n3 - периодическая функция\n4 - степенная функция\n\n")
     X_count = int(input("Выберите количество элементов в выбранной последовательности: "))
     X = []
     if X_choice == '1':
@@ -82,15 +83,29 @@ if choice == '1':
         for index_of_factorial in range(X_count):
             X[index_of_factorial] = factorial(index_of_factorial + 1)
         print(X)
+    if X_choice == '3':
+        row_type = "loop"
+        for index_of_primary_fill in range(X_count):
+            if index_of_primary_fill % 2 == 0:
+                X.append(1)
+            else:
+                X.append(0)
+        print(X)
+    if X_choice == '4':
+        row_type = "pow"
+        x_pow = int(input("Введите степень для степенной функции: "))
+        for index_of_pow_func in range(X_count):
+            X.append(index_of_pow_func ** x_pow)
+        print(X)
 
     E = float(input("Введите ошибку: "))
     ALPHA = float(input("Введите коэффициент обучения: "))
     L = int(input("Введите количество столбцов в матрице обучения: "))
-    p = int(input("Введите количество строк в матрице обучения: "))
+    # p = int(input("Введите количество строк в матрице обучения: "))
     limit_of_iterations = int(input("Введите количество шагов обучения, которые может пройти сеть: "))
 
     # L = 4
-    # p = len(X) - L - 1
+    p = len(X) - L - 1
     # limit_of_iterations = 1000
     number_of_neurons_on_hidden_layer = 5
 
